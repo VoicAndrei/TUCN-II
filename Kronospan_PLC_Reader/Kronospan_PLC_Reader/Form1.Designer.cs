@@ -33,7 +33,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label_ConnectStatus = new System.Windows.Forms.Label();
             this.comboBox_CPU_Type = new System.Windows.Forms.ComboBox();
-            this.button_Disconnect_PLC = new System.Windows.Forms.Button();
             this.button_Connect_PLC = new System.Windows.Forms.Button();
             this.textBox_Slot = new System.Windows.Forms.TextBox();
             this.textBox_Rack = new System.Windows.Forms.TextBox();
@@ -56,6 +55,10 @@
             this.textBox_DB = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView_PLCValues = new System.Windows.Forms.DataGridView();
+            this.listView_ConnectedPLCs = new System.Windows.Forms.ListView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button_Disconnect_Selected_PLC = new System.Windows.Forms.Button();
+            this.column_PLC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.column_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.column_Offset = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,9 +76,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button_Disconnect_Selected_PLC);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.listView_ConnectedPLCs);
             this.groupBox1.Controls.Add(this.label_ConnectStatus);
             this.groupBox1.Controls.Add(this.comboBox_CPU_Type);
-            this.groupBox1.Controls.Add(this.button_Disconnect_PLC);
             this.groupBox1.Controls.Add(this.button_Connect_PLC);
             this.groupBox1.Controls.Add(this.textBox_Slot);
             this.groupBox1.Controls.Add(this.textBox_Rack);
@@ -86,7 +91,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(43, 32);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(296, 195);
+            this.groupBox1.Size = new System.Drawing.Size(354, 195);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PLC Connection";
@@ -94,7 +99,7 @@
             // label_ConnectStatus
             // 
             this.label_ConnectStatus.AutoSize = true;
-            this.label_ConnectStatus.Location = new System.Drawing.Point(15, 171);
+            this.label_ConnectStatus.Location = new System.Drawing.Point(15, 164);
             this.label_ConnectStatus.Name = "label_ConnectStatus";
             this.label_ConnectStatus.Size = new System.Drawing.Size(78, 13);
             this.label_ConnectStatus.TabIndex = 2;
@@ -103,24 +108,14 @@
             // comboBox_CPU_Type
             // 
             this.comboBox_CPU_Type.FormattingEnabled = true;
-            this.comboBox_CPU_Type.Location = new System.Drawing.Point(100, 38);
+            this.comboBox_CPU_Type.Location = new System.Drawing.Point(86, 38);
             this.comboBox_CPU_Type.Name = "comboBox_CPU_Type";
-            this.comboBox_CPU_Type.Size = new System.Drawing.Size(177, 21);
+            this.comboBox_CPU_Type.Size = new System.Drawing.Size(110, 21);
             this.comboBox_CPU_Type.TabIndex = 9;
-            // 
-            // button_Disconnect_PLC
-            // 
-            this.button_Disconnect_PLC.Location = new System.Drawing.Point(202, 166);
-            this.button_Disconnect_PLC.Name = "button_Disconnect_PLC";
-            this.button_Disconnect_PLC.Size = new System.Drawing.Size(75, 23);
-            this.button_Disconnect_PLC.TabIndex = 8;
-            this.button_Disconnect_PLC.Text = "Disconnect";
-            this.button_Disconnect_PLC.UseVisualStyleBackColor = true;
-            this.button_Disconnect_PLC.Click += new System.EventHandler(this.button_Disconnect_PLC_Click);
             // 
             // button_Connect_PLC
             // 
-            this.button_Connect_PLC.Location = new System.Drawing.Point(121, 166);
+            this.button_Connect_PLC.Location = new System.Drawing.Point(99, 159);
             this.button_Connect_PLC.Name = "button_Connect_PLC";
             this.button_Connect_PLC.Size = new System.Drawing.Size(75, 23);
             this.button_Connect_PLC.TabIndex = 7;
@@ -130,23 +125,23 @@
             // 
             // textBox_Slot
             // 
-            this.textBox_Slot.Location = new System.Drawing.Point(100, 126);
+            this.textBox_Slot.Location = new System.Drawing.Point(86, 126);
             this.textBox_Slot.Name = "textBox_Slot";
-            this.textBox_Slot.Size = new System.Drawing.Size(177, 20);
+            this.textBox_Slot.Size = new System.Drawing.Size(110, 20);
             this.textBox_Slot.TabIndex = 6;
             // 
             // textBox_Rack
             // 
-            this.textBox_Rack.Location = new System.Drawing.Point(100, 97);
+            this.textBox_Rack.Location = new System.Drawing.Point(86, 97);
             this.textBox_Rack.Name = "textBox_Rack";
-            this.textBox_Rack.Size = new System.Drawing.Size(177, 20);
+            this.textBox_Rack.Size = new System.Drawing.Size(110, 20);
             this.textBox_Rack.TabIndex = 5;
             // 
             // textBox_IP_Address
             // 
-            this.textBox_IP_Address.Location = new System.Drawing.Point(100, 68);
+            this.textBox_IP_Address.Location = new System.Drawing.Point(86, 68);
             this.textBox_IP_Address.Name = "textBox_IP_Address";
-            this.textBox_IP_Address.Size = new System.Drawing.Size(177, 20);
+            this.textBox_IP_Address.Size = new System.Drawing.Size(110, 20);
             this.textBox_IP_Address.TabIndex = 4;
             // 
             // label4
@@ -198,9 +193,9 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.textBox_Location);
             this.groupBox2.Controls.Add(this.textBox_DB);
-            this.groupBox2.Location = new System.Drawing.Point(43, 249);
+            this.groupBox2.Location = new System.Drawing.Point(43, 233);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(296, 261);
+            this.groupBox2.Size = new System.Drawing.Size(354, 328);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Select Locations";
@@ -243,7 +238,7 @@
             this.listView_DB_Locations.HideSelection = false;
             this.listView_DB_Locations.Location = new System.Drawing.Point(180, 31);
             this.listView_DB_Locations.Name = "listView_DB_Locations";
-            this.listView_DB_Locations.Size = new System.Drawing.Size(110, 221);
+            this.listView_DB_Locations.Size = new System.Drawing.Size(163, 275);
             this.listView_DB_Locations.TabIndex = 6;
             this.listView_DB_Locations.UseCompatibleStateImageBehavior = false;
             // 
@@ -302,9 +297,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dataGridView_PLCValues);
-            this.groupBox3.Location = new System.Drawing.Point(398, 32);
+            this.groupBox3.Location = new System.Drawing.Point(427, 32);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(721, 469);
+            this.groupBox3.Size = new System.Drawing.Size(692, 469);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Display Locations";
@@ -314,16 +309,50 @@
             this.dataGridView_PLCValues.AllowUserToAddRows = false;
             this.dataGridView_PLCValues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_PLCValues.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.column_PLC,
             this.column_Name,
             this.column_DB,
             this.column_Offset,
             this.column_DataType,
             this.column_Value});
-            this.dataGridView_PLCValues.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView_PLCValues.Location = new System.Drawing.Point(6, 13);
             this.dataGridView_PLCValues.Name = "dataGridView_PLCValues";
             this.dataGridView_PLCValues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_PLCValues.Size = new System.Drawing.Size(544, 450);
+            this.dataGridView_PLCValues.Size = new System.Drawing.Size(675, 450);
             this.dataGridView_PLCValues.TabIndex = 0;
+            // 
+            // listView_ConnectedPLCs
+            // 
+            this.listView_ConnectedPLCs.HideSelection = false;
+            this.listView_ConnectedPLCs.Location = new System.Drawing.Point(202, 38);
+            this.listView_ConnectedPLCs.Name = "listView_ConnectedPLCs";
+            this.listView_ConnectedPLCs.Size = new System.Drawing.Size(146, 108);
+            this.listView_ConnectedPLCs.TabIndex = 10;
+            this.listView_ConnectedPLCs.UseCompatibleStateImageBehavior = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(226, 24);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 13);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Connected PLC\'s";
+            // 
+            // button_Disconnect_Selected_PLC
+            // 
+            this.button_Disconnect_Selected_PLC.Location = new System.Drawing.Point(202, 159);
+            this.button_Disconnect_Selected_PLC.Name = "button_Disconnect_Selected_PLC";
+            this.button_Disconnect_Selected_PLC.Size = new System.Drawing.Size(146, 23);
+            this.button_Disconnect_Selected_PLC.TabIndex = 12;
+            this.button_Disconnect_Selected_PLC.Text = "Disconnect selected PLC";
+            this.button_Disconnect_Selected_PLC.UseVisualStyleBackColor = true;
+            this.button_Disconnect_Selected_PLC.Click += new System.EventHandler(this.button_Disconnect_Selected_PLC_Click);
+            // 
+            // column_PLC
+            // 
+            this.column_PLC.HeaderText = "PLC";
+            this.column_PLC.Name = "column_PLC";
             // 
             // column_Name
             // 
@@ -354,7 +383,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1131, 550);
+            this.ClientSize = new System.Drawing.Size(1131, 573);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -376,7 +405,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label_ConnectStatus;
         private System.Windows.Forms.ComboBox comboBox_CPU_Type;
-        private System.Windows.Forms.Button button_Disconnect_PLC;
         private System.Windows.Forms.Button button_Connect_PLC;
         private System.Windows.Forms.TextBox textBox_Slot;
         private System.Windows.Forms.TextBox textBox_Rack;
@@ -399,6 +427,10 @@
         private System.Windows.Forms.TextBox textBox_Name;
         private System.Windows.Forms.ComboBox comboBox_DataType;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ListView listView_ConnectedPLCs;
+        private System.Windows.Forms.Button button_Disconnect_Selected_PLC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn column_PLC;
         private System.Windows.Forms.DataGridViewTextBoxColumn column_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn column_DB;
         private System.Windows.Forms.DataGridViewTextBoxColumn column_Offset;

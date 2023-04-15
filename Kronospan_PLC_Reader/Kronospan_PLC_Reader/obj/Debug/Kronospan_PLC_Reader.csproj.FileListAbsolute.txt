@@ -1,6 +1,5 @@
 C:\Users\Voic\source\repos\Kronospan_PLC_Reader\Kronospan_PLC_Reader\obj\Debug\Kronospan_PLC_Reader.csproj.AssemblyReference.cache
 C:\Users\Voic\source\repos\Kronospan_PLC_Reader\Kronospan_PLC_Reader\obj\Debug\Kronospan_PLC_Reader.csproj.SuggestedBindingRedirects.cache
-C:\Users\Voic\source\repos\Kronospan_PLC_Reader\Kronospan_PLC_Reader\obj\Debug\Kronospan_PLC_Reader.Form1.resources
 C:\Users\Voic\source\repos\Kronospan_PLC_Reader\Kronospan_PLC_Reader\obj\Debug\Kronospan_PLC_Reader.Properties.Resources.resources
 C:\Users\Voic\source\repos\Kronospan_PLC_Reader\Kronospan_PLC_Reader\obj\Debug\Kronospan_PLC_Reader.csproj.GenerateResource.cache
 C:\Users\Voic\source\repos\Kronospan_PLC_Reader\Kronospan_PLC_Reader\obj\Debug\Kronospan_PLC_Reader.csproj.CoreCompileInputs.cache
@@ -12,3 +11,4 @@ C:\Users\Voic\source\repos\Kronospan_PLC_Reader\Kronospan_PLC_Reader\bin\Debug\S
 C:\Users\Voic\source\repos\Kronospan_PLC_Reader\Kronospan_PLC_Reader\obj\Debug\Kronospan_PLC_Reader.csproj.CopyComplete
 C:\Users\Voic\source\repos\Kronospan_PLC_Reader\Kronospan_PLC_Reader\obj\Debug\Kronospan_PLC_Reader.exe
 C:\Users\Voic\source\repos\Kronospan_PLC_Reader\Kronospan_PLC_Reader\obj\Debug\Kronospan_PLC_Reader.pdb
+C:\Users\Voic\source\repos\Kronospan_PLC_Reader\Kronospan_PLC_Reader\obj\Debug\Kronospan_PLC_Reader.Form1.resources
